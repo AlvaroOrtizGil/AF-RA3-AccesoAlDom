@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor Interactivo de Tareas</title>
+</head>
+<body>
+    <h1 id="tituloPrincipal">Página HTML</h1>
+
+    <p id="mensajeBienvenida">Bienvenido a nuestro gestor interactivo de tareas, <span id="nombreUsuario">invitado</span>.</p>
+
+    <!-- Formulario de Usuario -->
+    <input type="text" id="inputNombre" placeholder="Introduce tu nombre" />
+    <select id="colorUsuario">
+        <option value="">Selecciona un color</option>
+        <option value="red">Rojo</option>
+        <option value="green">Verde</option>
+        <option value="blue">Azul</option>
+        <option value="yellow">Amarillo</option>
+    </select>
+    <button id="btnActualizarNombre">Actualizar saludo</button>
+
+    <script>
+        // Función para actualizar el saludo con el nombre ingresado
+        function actualizarSaludo() {
+            const nombre = document.getElementById("inputNombre").value;
+            const nombreUsuario = document.getElementById("nombreUsuario");
+            nombreUsuario.textContent = nombre || "invitado"; // Si no hay nombre, muestra "invitado"
+        }
+
+        // Añadir evento al botón para actualizar el nombre
+        document.getElementById("btnActualizarNombre").addEventListener("click", actualizarSaludo);
+
+        // Cambiar el color del nombre según la selección del usuario
+        document.getElementById("colorUsuario").addEventListener("change", function() {
+            const colorSeleccionado = this.value;
+            const nombreUsuario = document.getElementById("nombreUsuario");
+            nombreUsuario.style.color = colorSeleccionado;
+        });
+    </script>
+</body>
+</html>
