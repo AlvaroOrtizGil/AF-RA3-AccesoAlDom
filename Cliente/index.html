@@ -21,6 +21,17 @@
     </select>
     <button id="btnActualizarNombre">Actualizar saludo</button>
 
+    <!-- Lista de Tareas -->
+    <ul id="listaTareas">
+        <li>Tarea 1</li>
+        <li>Tarea 2</li>
+        <li>Tarea 3</li>
+    </ul>
+
+    <!-- Campo para agregar nueva tarea -->
+    <input type="text" id="inputTarea" placeholder="Introduce una nueva tarea" />
+    <button id="btnAgregarTarea">Agregar Tarea</button>
+
     <script>
         // Función para actualizar el saludo con el nombre ingresado
         function actualizarSaludo() {
@@ -38,6 +49,23 @@
             const nombreUsuario = document.getElementById("nombreUsuario");
             nombreUsuario.style.color = colorSeleccionado;
         });
+
+        // Función para agregar una nueva tarea a la lista
+        function agregarTarea() {
+            const inputTarea = document.getElementById("inputTarea");
+            const listaTareas = document.getElementById("listaTareas");
+            
+            // Crear un nuevo elemento de lista
+            if (inputTarea.value.trim() !== "") { // Solo agregar si hay texto
+                const nuevaTarea = document.createElement("li");
+                nuevaTarea.textContent = inputTarea.value;
+                listaTareas.appendChild(nuevaTarea);
+                inputTarea.value = ""; // Limpiar el campo de entrada
+            }
+        }
+
+        // Añadir evento al botón para agregar tarea
+        document.getElementById("btnAgregarTarea").addEventListener("click", agregarTarea);
     </script>
 </body>
 </html>
