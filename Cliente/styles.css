@@ -1,0 +1,105 @@
+/* General */
+body {
+    background-color: #f8f9fa;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Estilos para el tema oscuro */
+body.tema-oscuro {
+    background-color: #1e1e1e;
+    color: #ffffff;
+}
+
+/* Estilo para botones */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Estilo para el botón de alternar tema */
+#btnAlternarTema {
+    background-color: #444444;
+    color: #ffffff;
+    margin-top: 20px;
+}
+
+/* Estilo para el botón de alternar tema cuando está en modo claro */
+body:not(.tema-oscuro) #btnAlternarTema {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+/* Efecto al pasar el ratón por la caja */
+.hoverEffect:hover {
+    background-color: #cce7ff;
+    transform: scale(1.05);
+}
+
+/* Estilo para la imagen en galería */
+.Galeria img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+.Galeria img:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo de las cajas */
+.cuadroInfo {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin: 10px auto;
+    text-align: center;
+    font-size: 16px;
+    background-color: #f4f4f4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Efecto al pasar el ratón por las cajas */
+.cuadroInfo:hover {
+    background-color: #cce7ff;
+    transform: scale(1.05);
+}
+
+/* Estilo para el borde de las cajas al pasar el ratón */
+.cuadroInfo:hover {
+    border-color: #007bff;
+}
+
+/* Caja de texto para mejorar la visualización */
+.cuadroInfo p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Estilos para las tareas */
+#listaTareas {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#listaTareas .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#listaTareas button {
+    margin-left: 10px;
+}
+
+/* Cambios para las imágenes en la galería */
+img[alt="Edificio"], img[alt="Montaña"], img[alt="Arbol"] {
+    max-width: 100%;
+    height: auto;
+}

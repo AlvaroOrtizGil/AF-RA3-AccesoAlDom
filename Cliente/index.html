@@ -1,71 +1,91 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestor Interactivo de Tareas</title>
+    <!-- Incluir Bootstrap desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 id="tituloPrincipal">Página HTML</h1>
 
-    <p id="mensajeBienvenida">Bienvenido a nuestro gestor interactivo de tareas, <span id="nombreUsuario">invitado</span>.</p>
+    <div class="container mt-4">
+        <h1 id="tituloPrincipal" class="text-center mb-4">Página HTML</h1>
+        <p id="mensajeBienvenida" class="text-center mb-4">Bienvenido a nuestro gestor interactivo de tareas, <span id="nombreUsuario">invitado</span>.</p>
 
-    <!-- Formulario de Usuario -->
-    <input type="text" id="inputNombre" placeholder="Introduce tu nombre" />
-    <select id="colorUsuario">
-        <option value="">Selecciona un color</option>
-        <option value="red">Rojo</option>
-        <option value="green">Verde</option>
-        <option value="blue">Azul</option>
-        <option value="yellow">Amarillo</option>
-    </select>
-    <button id="btnActualizarNombre">Actualizar saludo</button>
+        <!-- Formulario de Usuario -->
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <input type="text" id="inputNombre" class="form-control mb-2" placeholder="Introduce tu nombre" />
+                <select id="colorUsuario" class="form-select mb-2">
+                    <option value="">Selecciona un color</option>
+                    <option value="red">Rojo</option>
+                    <option value="green">Verde</option>
+                    <option value="blue">Azul</option>
+                    <option value="yellow">Amarillo</option>
+                </select>
+                <button id="btnActualizarNombre" class="btn btn-primary w-100">Actualizar saludo</button>
+            </div>
+        </div>
 
-    <!-- Lista de Tareas -->
-    <ul id="listaTareas">
-        <li>Tarea 1</li>
-        <li>Tarea 2</li>
-        <li>Tarea 3</li>
-    </ul>
+        <!-- Lista de Tareas -->
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <ul id="listaTareas" class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Tarea 1
+                        <button class="btn btn-danger btn-sm btnEliminar">Eliminar</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Tarea 2
+                        <button class="btn btn-danger btn-sm btnEliminar">Eliminar</button>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        Tarea 3
+                        <button class="btn btn-danger btn-sm btnEliminar">Eliminar</button>
+                    </li>
+                </ul>
+                <div class="input-group mt-2">
+                    <input type="text" id="inputTarea" class="form-control" placeholder="Introduce una nueva tarea" />
+                    <button id="btnAgregarTarea" class="btn btn-success">Agregar Tarea</button>
+                </div>
+                <button id="btnOcultarTareas" class="btn btn-warning w-100 mt-2">Ocultar Tareas</button>
+            </div>
+        </div>
 
-    <!-- Campo para agregar nueva tarea -->
-    <input type="text" id="inputTarea" placeholder="Introduce una nueva tarea" />
-    <button id="btnAgregarTarea">Agregar Tarea</button>
+        <!-- Botón para alternar tema claro/oscuro -->
+        <div class="text-center">
+            <button id="btnAlternarTema" class="btn btn-secondary">Alternar Tema Oscuro</button>
+        </div>
 
-    <script>
-        // Función para actualizar el saludo con el nombre ingresado
-        function actualizarSaludo() {
-            const nombre = document.getElementById("inputNombre").value;
-            const nombreUsuario = document.getElementById("nombreUsuario");
-            nombreUsuario.textContent = nombre || "invitado"; // Si no hay nombre, muestra "invitado"
-        }
+        <!-- Caja que cambia de color al pasar el ratón -->
+        <div class="cuadroInfo hoverEffect mt-4">
+            Pasa el ratón aquí para cambiar el color
+        </div>
 
-        // Añadir evento al botón para actualizar el nombre
-        document.getElementById("btnActualizarNombre").addEventListener("click", actualizarSaludo);
+        <!-- Caja que se oculta al hacer doble clic -->
+        <div class="cuadroInfo mt-4" ondblclick="ocultarCaja(this)">
+            Haz doble clic para ocultarme
+        </div>
 
-        // Cambiar el color del nombre según la selección del usuario
-        document.getElementById("colorUsuario").addEventListener("change", function() {
-            const colorSeleccionado = this.value;
-            const nombreUsuario = document.getElementById("nombreUsuario");
-            nombreUsuario.style.color = colorSeleccionado;
-        });
+        <!-- Galería de Imágenes -->
+        <h2 class="text-center my-4">Galería de Imágenes</h2>
+        <div class="Galeria row text-center">
+            <div class="col-4">
+                <img src="imagenes/montaña.jpg" alt="Montaña" class="img-fluid">
+            </div>
+            <div class="col-4">
+                <img src="imagenes/edificio.jpg" alt="Edificio" class="img-fluid">
+            </div>
+            <div class="col-4">
+                <img src="imagenes/arbol.jpg" alt="Árbol" class="img-fluid">
+            </div>
+        </div>
+    </div>
 
-        // Función para agregar una nueva tarea a la lista
-        function agregarTarea() {
-            const inputTarea = document.getElementById("inputTarea");
-            const listaTareas = document.getElementById("listaTareas");
-            
-            // Crear un nuevo elemento de lista
-            if (inputTarea.value.trim() !== "") { // Solo agregar si hay texto
-                const nuevaTarea = document.createElement("li");
-                nuevaTarea.textContent = inputTarea.value;
-                listaTareas.appendChild(nuevaTarea);
-                inputTarea.value = ""; // Limpiar el campo de entrada
-            }
-        }
-
-        // Añadir evento al botón para agregar tarea
-        document.getElementById("btnAgregarTarea").addEventListener("click", agregarTarea);
-    </script>
+    <!-- Cargar el archivo JavaScript al final del body -->
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
